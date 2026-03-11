@@ -399,6 +399,39 @@
       gap: 8px;
     }
 
+    .mobile-nav {
+      display: none;
+      gap: 8px;
+      padding: 2px 16px 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      background: rgba(249, 249, 249, 0.82);
+      backdrop-filter: blur(10px);
+    }
+
+    .mobile-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-nav-btn {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid #e2e5e9;
+      background: rgba(255, 255, 255, 0.9);
+      color: #4b5563;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .mobile-nav-btn.active {
+      background: #111827;
+      border-color: #111827;
+      color: #fff;
+    }
+
     .lang-toggle {
       height: 36px;
       padding: 0 12px;
@@ -1634,6 +1667,10 @@
         display: none;
       }
 
+      .mobile-nav {
+        display: flex;
+      }
+
       .thread {
         padding: 0 12px;
       }
@@ -1825,6 +1862,15 @@
           </button>
         </div>
       </header>
+
+      <div class="mobile-nav" aria-label="移动端导航">
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="coros-basic">基础查询</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="sleep-analysis">睡眠分析</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="hongkong">路线推荐</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="analysis">路线预估</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-view="apps">应用</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-view="demo">说明</button>
+      </div>
 
       <div class="content-scroll">
         <div class="view view-chat active" data-view="chat">
@@ -2533,6 +2579,8 @@
     let closeAuthButtons = [];
     let demoTargets = [];
     let demoActions = [];
+    let mobileNavViewButtons = [];
+    let mobileNavChatButtons = [];
     let composerInput = null;
 
     let currentLanguage = localStorage.getItem("coros-demo-language") || "zh";
@@ -2571,6 +2619,16 @@
           hongkong: "香港徒步路线推荐",
           analysis: "路线分析与预计时间"
         },
+        mobileChatLabels: {
+          "coros-basic": "基础查询",
+          "sleep-analysis": "睡眠分析",
+          hongkong: "路线推荐",
+          analysis: "路线预估"
+        },
+        mobileViewLabels: {
+          apps: "应用",
+          demo: "说明"
+        },
         projectItems: ["⊞ 新项目", "☐ Coros MCP & Agent", "☐ Coros-Link"],
         userPlan: "Plus",
         thinkingPill: "◌ 思考 ˅"
@@ -2593,6 +2651,16 @@
           "sleep-analysis": "Sleep Analysis",
           hongkong: "Hong Kong Hike Ideas",
           analysis: "Route Timing Estimate"
+        },
+        mobileChatLabels: {
+          "coros-basic": "Queries",
+          "sleep-analysis": "Sleep",
+          hongkong: "Routes",
+          analysis: "Estimate"
+        },
+        mobileViewLabels: {
+          apps: "Apps",
+          demo: "Info"
         },
         projectItems: ["⊞ New project", "☐ Coros MCP & Agent", "☐ Coros-Link"],
         userPlan: "Plus",
@@ -3240,6 +3308,8 @@
       closeAuthButtons = Array.from(document.querySelectorAll("[data-close-auth]"));
       demoTargets = Array.from(document.querySelectorAll("[data-demo-target]"));
       demoActions = Array.from(document.querySelectorAll("[data-demo-action]"));
+      mobileNavViewButtons = Array.from(document.querySelectorAll("[data-mobile-view]"));
+      mobileNavChatButtons = Array.from(document.querySelectorAll("[data-mobile-chat]"));
       composerInput = document.querySelector(".composer-input");
     }
 
@@ -3251,6 +3321,12 @@
       navButtons.forEach((button) => {
         button.classList.toggle("active-nav", button.dataset.navTarget === viewId);
       });
+      mobileNavViewButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.mobileView === viewId);
+      });
+      if (viewId !== "chat") {
+        mobileNavChatButtons.forEach((button) => button.classList.remove("active"));
+      }
     }
 
     function openDemo() {
@@ -3265,6 +3341,10 @@
       conversations.forEach((panel) => {
         panel.classList.toggle("active", panel.dataset.chatId === chatId);
       });
+      mobileNavChatButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.mobileChat === chatId);
+      });
+      mobileNavViewButtons.forEach((button) => button.classList.remove("active"));
       const drafts = composerDraftsByLang[currentLanguage] || composerDraftsByLang.zh;
       if (composerInput && drafts[chatId]) {
         composerInput.value = drafts[chatId];
@@ -3326,6 +3406,14 @@
         };
       });
 
+      mobileNavViewButtons.forEach((button) => {
+        button.onclick = () => switchView(button.dataset.mobileView);
+      });
+
+      mobileNavChatButtons.forEach((button) => {
+        button.onclick = () => switchChat(button.dataset.mobileChat);
+      });
+
       connectCorosButtons.forEach((button) => {
         button.onclick = openCorosAuth;
       });
@@ -3366,6 +3454,16 @@
       document.querySelectorAll(".chat-label").forEach((label) => {
         const key = label.dataset.chatLabel;
         if (copy.chatLabels[key]) label.textContent = copy.chatLabels[key];
+      });
+
+      document.querySelectorAll("[data-mobile-chat]").forEach((button) => {
+        const key = button.dataset.mobileChat;
+        if (copy.mobileChatLabels[key]) button.textContent = copy.mobileChatLabels[key];
+      });
+
+      document.querySelectorAll("[data-mobile-view]").forEach((button) => {
+        const key = button.dataset.mobileView;
+        if (copy.mobileViewLabels[key]) button.textContent = copy.mobileViewLabels[key];
       });
 
       const projectItems = Array.from(document.querySelectorAll(".project-item"));
