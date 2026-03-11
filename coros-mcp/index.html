@@ -53,6 +53,104 @@
       text-rendering: optimizeLegibility;
     }
 
+    body {
+      position: relative;
+    }
+
+    .demo-shell[hidden] {
+      display: none !important;
+    }
+
+    .demo-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(247, 247, 248, 0.94);
+      backdrop-filter: blur(14px);
+    }
+
+    .demo-gate[hidden] {
+      display: none !important;
+    }
+
+    .gate-card {
+      width: min(100%, 420px);
+      border-radius: 24px;
+      border: 1px solid #e6e6e6;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      padding: 28px;
+    }
+
+    .gate-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid #e6e6e6;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .gate-title {
+      font-size: 30px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .gate-copy {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    .gate-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .gate-input {
+      width: 100%;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid #dddddf;
+      background: #fff;
+      padding: 0 14px;
+      font-size: 16px;
+      color: #111827;
+      outline: none;
+    }
+
+    .gate-input:focus {
+      border-color: #b9c0cb;
+    }
+
+    .gate-submit {
+      height: 46px;
+      border: 0;
+      border-radius: 999px;
+      background: #111827;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .gate-error {
+      min-height: 18px;
+      font-size: 12px;
+      color: #b42318;
+    }
+
     .app-shell {
       display: grid;
       grid-template-columns: 260px minmax(0, 1fr);
@@ -1616,6 +1714,20 @@
   </style>
 </head>
 <body>
+  <div class="demo-gate" id="demoGate">
+    <div class="gate-card">
+      <div class="gate-mark">CR</div>
+      <h1 class="gate-title">COROS Demo</h1>
+      <p class="gate-copy">请输入访问密码后查看演示内容。</p>
+      <form class="gate-form" id="demoGateForm">
+        <input class="gate-input" id="demoGateInput" type="password" inputmode="numeric" autocomplete="off" placeholder="访问密码" />
+        <button class="gate-submit" type="submit">进入 Demo</button>
+        <div class="gate-error" id="demoGateError"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="demo-shell" id="demoShell" hidden>
   <div class="app-shell">
     <aside class="sidebar">
       <div class="sidebar-scroll">
@@ -2364,6 +2476,46 @@
   </div>
 
   <script>
+    const DEMO_PASSWORD = "0232";
+    const DEMO_ACCESS_KEY = "product-demo-coros-access";
+    const demoGate = document.getElementById("demoGate");
+    const demoShell = document.getElementById("demoShell");
+    const demoGateForm = document.getElementById("demoGateForm");
+    const demoGateInput = document.getElementById("demoGateInput");
+    const demoGateError = document.getElementById("demoGateError");
+
+    function unlockDemo() {
+      if (demoGate) demoGate.hidden = true;
+      if (demoShell) demoShell.hidden = false;
+      sessionStorage.setItem(DEMO_ACCESS_KEY, "granted");
+    }
+
+    function initDemoGate() {
+      if (sessionStorage.getItem(DEMO_ACCESS_KEY) === "granted") {
+        unlockDemo();
+        return;
+      }
+
+      if (demoGate) demoGate.hidden = false;
+      if (demoShell) demoShell.hidden = true;
+
+      if (demoGateForm) {
+        demoGateForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!demoGateInput) return;
+
+          if (demoGateInput.value === DEMO_PASSWORD) {
+            if (demoGateError) demoGateError.textContent = "";
+            unlockDemo();
+            return;
+          }
+
+          if (demoGateError) demoGateError.textContent = "密码错误";
+          demoGateInput.select();
+        });
+      }
+    }
+
     const corosAuthModal = document.getElementById("corosAuthModal");
     const langToggle = document.getElementById("langToggle");
     const appsPageContainer = document.getElementById("appsPageContainer");
@@ -3263,6 +3415,8 @@
 
     bindInteractions();
     renderLanguage(currentLanguage);
+    initDemoGate();
   </script>
+  </div>
 </body>
 </html>
