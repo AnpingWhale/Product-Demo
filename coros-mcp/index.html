@@ -263,6 +263,13 @@
       padding: 8px 10px 4px;
     }
 
+    .chat-section-label {
+      font-size: 11px;
+      color: var(--text-subtle);
+      padding: 10px 10px 4px;
+      letter-spacing: 0.02em;
+    }
+
     .project-item,
     .chat-item {
       height: 32px;
@@ -1828,11 +1835,28 @@
         </div>
 
         <div class="menu-title" id="menuTitleChats">你的聊天</div>
+        <div class="chat-section-label">基础查询</div>
         <div class="menu-group">
-          <button class="chat-item" data-chat-target="coros-basic"><span class="chat-label" data-chat-label="coros-basic">Coros基本数据查询</span> <span class="dot"></span></button>
+          <button class="chat-item active" data-chat-target="coros-basic"><span class="chat-label" data-chat-label="coros-basic">Coros基本数据查询</span> <span class="dot"></span></button>
+        </div>
+        <div class="chat-section-label">分析与判断</div>
+        <div class="menu-group">
           <button class="chat-item" data-chat-target="sleep-analysis"><span class="chat-label" data-chat-label="sleep-analysis">睡眠数据分析</span> <span class="dot"></span></button>
-          <button class="chat-item" data-chat-target="hongkong"><span class="chat-label" data-chat-label="hongkong">香港徒步路线推荐</span> <span class="dot"></span></button>
-          <button class="chat-item active" data-chat-target="analysis"><span class="chat-label" data-chat-label="analysis">路线分析与预计时间</span> <span class="dot"></span></button>
+          <button class="chat-item" data-chat-target="training-review"><span class="chat-label" data-chat-label="training-review">训练复盘与负荷判断</span> <span class="dot"></span></button>
+          <button class="chat-item" data-chat-target="zones-fitness"><span class="chat-label" data-chat-label="zones-fitness">训练区与体能模型查询</span> <span class="dot"></span></button>
+        </div>
+        <div class="chat-section-label">服务与账户</div>
+        <div class="menu-group">
+          <button class="chat-item" data-chat-target="training-calendar"><span class="chat-label" data-chat-label="training-calendar">训练日历查询</span> <span class="dot"></span></button>
+          <button class="chat-item" data-chat-target="device-account"><span class="chat-label" data-chat-label="device-account">设备与账户服务场景</span> <span class="dot"></span></button>
+        </div>
+        <div class="chat-section-label">路线与生态</div>
+        <div class="menu-group">
+          <button class="chat-item" data-chat-target="route-estimate"><span class="chat-label" data-chat-label="route-estimate">路线分析与预计时间</span> <span class="dot"></span></button>
+        </div>
+        <div class="chat-section-label">二期能力预览</div>
+        <div class="menu-group">
+          <button class="chat-item" data-chat-target="phase-two-preview"><span class="chat-label" data-chat-label="phase-two-preview">二期能力预览</span> <span class="dot"></span></button>
         </div>
 
         <div class="spacer"></div>
@@ -1867,10 +1891,13 @@
       </header>
 
       <div class="mobile-nav" aria-label="移动端导航">
-        <button class="mobile-nav-btn" type="button" data-mobile-chat="coros-basic">基础查询</button>
+        <button class="mobile-nav-btn active" type="button" data-mobile-chat="coros-basic">基础查询</button>
         <button class="mobile-nav-btn" type="button" data-mobile-chat="sleep-analysis">睡眠分析</button>
-        <button class="mobile-nav-btn" type="button" data-mobile-chat="hongkong">路线推荐</button>
-        <button class="mobile-nav-btn" type="button" data-mobile-chat="analysis">路线预估</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="training-review">训练复盘</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="training-calendar">训练日历</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="device-account">账户服务</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="route-estimate">路线预估</button>
+        <button class="mobile-nav-btn" type="button" data-mobile-chat="phase-two-preview">二期</button>
         <button class="mobile-nav-btn" type="button" data-mobile-view="apps">应用</button>
         <button class="mobile-nav-btn" type="button" data-mobile-view="demo">说明</button>
       </div>
@@ -1878,191 +1905,107 @@
       <div class="content-scroll">
         <div class="view view-chat active" data-view="chat">
         <main class="thread" id="main">
-          <section class="conversation" data-chat-id="coros-basic">
-            <div class="user-turn">@Coros 先帮我查活动记录。</div>
+                    <section class="conversation active" data-chat-id="coros-basic">
+            <div class="user-turn">我最近都练了什么？先帮我捞一下。</div>
             <section class="assistant-turn compact">
               <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>活动记录 · 实时读取</span></div>
               <div class="assistant-body">
-                <h3>结果概览</h3>
-                <p>已同步你最近 30 天的活动历史。整体来看，你一共完成 42 次运动，总时长 46h 12m，其中跑步和骑行占比最高；近 7 天的记录如下，适合继续下钻看单次训练表现。</p>
+                <h3>概览</h3>
+                <p>我已经拉取你最近 30 天的训练历史。你一共完成 42 次运动，累计 46 小时 12 分钟；跑步和骑行占比最高，近 7 天的结构最适合先快速看一眼。</p>
               </div>
               <div class="workout-cards">
                 <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">清水湾海岸耐力跑</div>
-                    <span class="workout-card-type">跑步</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>昨天</span>
-                    <span>14.2 km</span>
-                    <span>1h 18m</span>
-                    <span>平均心率 148 bpm</span>
-                  </div>
+                  <div class="workout-card-head"><div class="workout-card-title">清水湾海岸耐力跑</div><span class="workout-card-type">跑步</span></div>
+                  <div class="workout-card-meta"><span>昨天</span><span>14.2 km</span><span>1h 18m</span><span>平均心率 148 bpm</span></div>
                 </article>
                 <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">大帽山爬升骑行</div>
-                    <span class="workout-card-type">骑行</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>3 天前</span>
-                    <span>52.4 km</span>
-                    <span>2h 06m</span>
-                    <span>爬升 812 m</span>
-                  </div>
+                  <div class="workout-card-head"><div class="workout-card-title">大帽山爬升骑行</div><span class="workout-card-type">骑行</span></div>
+                  <div class="workout-card-meta"><span>3 天前</span><span>52.4 km</span><span>2h 06m</span><span>爬升 812 m</span></div>
                 </article>
                 <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">麦理浩径恢复徒步</div>
-                    <span class="workout-card-type">徒步</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>6 天前</span>
-                    <span>9.8 km</span>
-                    <span>2h 31m</span>
-                    <span>平均配速 15'23"/km</span>
-                  </div>
-                </article>
-                <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">西贡轻松跑</div>
-                    <span class="workout-card-type">跑步</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>7 天前</span>
-                    <span>8.6 km</span>
-                    <span>48m</span>
-                    <span>训练负荷 86</span>
-                  </div>
+                  <div class="workout-card-head"><div class="workout-card-title">麦理浩径恢复徒步</div><span class="workout-card-type">徒步</span></div>
+                  <div class="workout-card-meta"><span>6 天前</span><span>9.8 km</span><span>2h 31m</span><span>平均配速 15'23"/km</span></div>
                 </article>
                 <article class="workout-card workout-more-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">查看更多</div>
-                    <span class="workout-card-type">COROS App</span>
-                  </div>
-                  <p>打开 COROS App 查看完整近 7 天活动列表、单次详情、轨迹和每次训练的 EvoLab 指标。</p>
+                  <div class="workout-card-head"><div class="workout-card-title">查看更多</div><span class="workout-card-type">COROS App</span></div>
+                  <p>在 COROS App 里继续查看近 7 天完整活动列表、轨迹和每次训练的 EvoLab 指标。</p>
                   <a class="workout-more-link" href="javascript:void(0)">前往活动记录 ›</a>
                 </article>
               </div>
               <div class="assistant-body">
-                <h3>简短解读</h3>
-                <p>近 7 天训练结构以 2 次跑步、1 次骑行、1 次徒步为主，说明你的有氧基础和坡度适应正在并行维持。最近一次跑步与骑行都落在中高质量区间，整体训练连续性不错。</p>
+                <h3>重点说明</h3>
+                <p>你最近一周是 2 次跑步、1 次骑行、1 次徒步的混合结构，有氧耐力和爬升适应都在维持。</p>
               </div>
             </section>
 
-            <div class="user-turn followup">@Coros 再帮我查活动消耗。</div>
+            <div class="user-turn followup">那最近消耗大概什么水平？</div>
             <section class="assistant-turn compact">
               <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>活动消耗 · 训练摘要</span></div>
               <div class="assistant-body">
-                <h3>结果概览</h3>
-                <p>最近 30 天总活动消耗 28,640 kcal，单次均值 682 kcal。近 7 天消耗最高的是“大帽山爬升骑行”这次，单次 1,124 kcal。</p>
-                <h3>项目对比</h3>
+                <h3>概览</h3>
+                <p>最近 30 天总活动消耗 28,640 kcal，单次均值 682 kcal。近 7 天消耗最高的一次是大帽山爬升骑行，单次 1,124 kcal。</p>
+                <h3>关键指标</h3>
                 <ul>
                   <li>跑步：单次均值 742 kcal，单位时长消耗最高</li>
-                  <li>骑行：总消耗贡献最高，长距离带来更明显累计值</li>
-                  <li>徒步：单位时长消耗更稳定，适合恢复周维持负荷</li>
+                  <li>骑行：总消耗贡献最高，主要来自长距离时长</li>
+                  <li>徒步：消耗更稳定，适合作为恢复周负荷维持</li>
                 </ul>
-                <h3>简短解读</h3>
-                <p>你当前的总消耗主要由跑步和骑行拉动，说明训练结构偏向耐力与爬升混合型。若要控制疲劳，后续可以把高消耗骑行后的次日安排成低冲击恢复训练。</p>
+                <h3>简短判断</h3>
+                <p>你当前的总消耗主要由跑步和骑行拉动。如果想控疲劳，高消耗骑行后的次日更适合安排低冲击恢复训练。</p>
               </div>
             </section>
 
-            <div class="user-turn followup">@Coros 再看心率数据和静息心率。</div>
+            <div class="user-turn followup">心率和静息心率也一起看下。</div>
             <section class="assistant-turn compact">
               <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>心率 · 静息心率</span></div>
               <div class="assistant-body">
-                <h3>活动心率结果</h3>
-                <p>平均活动心率 142 bpm；高强度区间 Z4-Z5 占比 21%，说明最近一周训练中质量课占比偏高。</p>
-                <h3>静息心率变化</h3>
-                <p>静息心率近 7 天均值 48 bpm，较前 7 天上升 1.8 bpm，变化幅度不大，但已经开始反映恢复压力累积。</p>
-                <h3>风险提示</h3>
-                <p>如果接下来 3 天静息心率继续上升，且恢复评分同步下滑，就需要主动降低强度密度，避免把高质量训练堆得过近。</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros 体力恢复和训练量评估也给我。</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>EvoLab · 恢复与训练状态</span></div>
-              <div class="assistant-body">
-                <h3>恢复状态</h3>
-                <p>恢复评分均值 73/100，最近 3 天连续走低，但还没有进入明显异常区间。当前更像是训练刺激持续叠加，而不是单次异常疲劳。</p>
-                <h3>训练负荷</h3>
-                <p>7 日训练量 684，处于 “Optimized” 区间上沿。和 42 日 Base Fitness 对比后，当前负荷仍在可承受范围，但已经接近你近期的稳定上限。</p>
-                <h3>当前判断</h3>
-                <p>你现在适合维持训练频率，但不建议继续增加高强度课比例。更稳的策略是保留 1 次关键课，其余训练偏向轻松跑、恢复骑行或低强度徒步。</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros 跑步能力、骑行能力、个人纪录呢？</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>能力评估 · 纪录</span></div>
-              <div class="assistant-body">
-                <h3>跑步能力</h3>
-                <p>VO2Max 54，马拉松预测 3:24:40。说明你的跑步能力已经具备稳定有氧基础，长距离配速控制能力也处在较成熟区间。</p>
-                <h3>骑行能力</h3>
-                <p>FTP 236W（3.28W/kg），近 4 周提升 +6W。骑行能力目前处于持续进步阶段，爬升段输出稳定性比前一个周期更好。</p>
-                <h3>个人纪录</h3>
+                <h3>概览</h3>
+                <p>平均活动心率 142 bpm，最近一周 Z4-Z5 占比 21%，说明高质量训练占比不低。</p>
+                <h3>关键指标</h3>
                 <ul>
-                  <li>5K：20:31</li>
-                  <li>10K：43:48</li>
-                  <li>半马：1:39:12</li>
+                  <li>近 7 天静息心率均值：48 bpm</li>
+                  <li>较前一周：+1.8 bpm</li>
+                  <li>高负荷日后 24 小时心率回落速度：中等偏好</li>
                 </ul>
-                <h3>简短解读</h3>
-                <p>整体能力画像偏“耐力型混合选手”：跑步能力是主轴，骑行能力在补强上坡与持续输出，适合继续做越野、徒步和多项目耐力场景联动分析。</p>
+                <h3>简短判断</h3>
+                <p>静息心率变化还不算异常，但已经开始反映恢复压力。如果接下来连续 3 天继续上升，建议主动降低强度密度。</p>
               </div>
             </section>
 
-            <div class="user-turn followup">@Coros 最后查设备状态（设备数量、保修有效期、蓝牙 ID）。</div>
+            <div class="user-turn followup">恢复、训练量、VO2max、HRV 和纪录也给我一起看。</div>
             <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>设备资产 · 账号绑定</span></div>
+              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>EvoLab · 恢复与能力</span></div>
               <div class="assistant-body">
-                <h3>设备总览</h3>
-                <p>当前账号下共绑定 2 台设备，分别是 VERTIX 2S 和 PACE 3，状态均为正常使用中。</p>
-                <h3>售后状态</h3>
+                <h3>概览</h3>
+                <p>恢复评分均值 73/100，7 日训练量 684，仍在 Optimized 区间，但已经接近你近期稳定上限。</p>
+                <h3>关键指标</h3>
                 <ul>
-                  <li>VERTIX 2S：保修有效至 2027-05-18，售后状态正常</li>
-                  <li>PACE 3：保修有效至 2026-11-02，售后状态正常</li>
+                  <li>VO2Max：54</li>
+                  <li>HRV：过去 7 天均值 71 ms，周中回落后周末回升</li>
+                  <li>跑步能力：马拉松预测 3:24:40</li>
+                  <li>骑行能力：FTP 236W（近 4 周 +6W）</li>
+                  <li>个人纪录：5K 20:31 / 10K 43:48 / 半马 1:39:12</li>
                 </ul>
-                <h3>识别信息</h3>
-                <p>蓝牙 ID 分别为 A4:C1:38:7D:91:2F、7C:9E:BD:41:63:88，可用于排查连接与售后定位问题。</p>
-                <h3>简短说明</h3>
-                <p>如果要解绑或调整第三方授权，可直接在 COROS App 的设备管理和第三方连接设置里处理；当前两台设备都没有看到异常保修或绑定风险。</p>
+                <h3>简短判断</h3>
+                <p>你现在属于“跑步为主、骑行补强”的混合耐力画像。负荷还能承受，但不适合继续堆高强度课比例。</p>
               </div>
             </section>
           </section>
 
           <section class="conversation" data-chat-id="sleep-analysis">
-            <div class="user-turn">@Coros 帮我查一下近七天睡眠，并做一个恢复状态分析。</div>
-
+            <div class="user-turn">我这周睡得怎么样？顺便看看恢复。</div>
             <section class="assistant-turn">
               <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>睡眠质量 · 恢复分析</span></div>
-              <p class="assistant-lead">我把你最近 7 天睡眠与恢复指标对齐后做了汇总，先给你结构化结果，再补可执行建议。</p>
+              <p class="assistant-lead">我把你最近 7 天睡眠和恢复放在一起看了，先给你趋势，再给建议。</p>
               <div class="thinking">已思考 12s</div>
-
               <div class="metric-strip">
-                <div class="metric-tile">
-                  <div class="metric-tile-label">平均睡眠</div>
-                  <div class="metric-tile-value">7h 06m</div>
-                  <div class="metric-tile-sub">较目标少 24 分钟</div>
-                </div>
-                <div class="metric-tile">
-                  <div class="metric-tile-label">平均睡眠评分</div>
-                  <div class="metric-tile-value">79</div>
-                  <div class="metric-tile-sub">Good 区间</div>
-                </div>
-                <div class="metric-tile">
-                  <div class="metric-tile-label">平均恢复评分</div>
-                  <div class="metric-tile-value">74</div>
-                  <div class="metric-tile-sub">周四与周六明显走低</div>
-                </div>
+                <div class="metric-tile"><div class="metric-tile-label">平均睡眠</div><div class="metric-tile-value">7h 06m</div><div class="metric-tile-sub">较目标少 24 分钟</div></div>
+                <div class="metric-tile"><div class="metric-tile-label">平均睡眠评分</div><div class="metric-tile-value">79</div><div class="metric-tile-sub">Good 区间</div></div>
+                <div class="metric-tile"><div class="metric-tile-label">平均恢复评分</div><div class="metric-tile-value">74</div><div class="metric-tile-sub">周四与周六走低</div></div>
               </div>
-
               <div class="sleep-chart-card">
                 <div class="sleep-chart-head">
-                  <div>
-                    <div class="sleep-chart-title">近 7 天睡眠与恢复趋势</div>
-                    <div class="sleep-chart-sub">睡眠柱体展示总时长与睡眠结构，折线展示次日恢复评分变化。</div>
-                  </div>
+                  <div><div class="sleep-chart-title">近 7 天睡眠与恢复趋势</div><div class="sleep-chart-sub">柱体展示总睡眠与睡眠结构，折线展示次日恢复评分。</div></div>
                   <div class="sleep-chart-legend">
                     <span><i class="legend-dot total"></i>总睡眠</span>
                     <span><i class="legend-dot deep"></i>深睡</span>
@@ -2076,212 +2019,181 @@
                   <line x1="50" y1="82" x2="732" y2="82" stroke="#f4f6f8" />
                   <line x1="50" y1="128" x2="732" y2="128" stroke="#f4f6f8" />
                   <line x1="50" y1="174" x2="732" y2="174" stroke="#f4f6f8" />
-
                   <text x="18" y="222" class="sleep-axis-label">0h</text>
                   <text x="12" y="178" class="sleep-axis-label">3h</text>
                   <text x="12" y="132" class="sleep-axis-label">6h</text>
                   <text x="12" y="86" class="sleep-axis-label">9h</text>
-
                   <g>
-                    <rect x="84" y="76" width="38" height="144" rx="10" fill="#eef2f6" />
-                    <rect x="84" y="189" width="38" height="31" rx="10" fill="#bcc7d5" />
-                    <rect x="84" y="162" width="38" height="27" rx="10" fill="#7d8ca1" />
-
-                    <rect x="178" y="88" width="38" height="132" rx="10" fill="#eef2f6" />
-                    <rect x="178" y="188" width="38" height="32" rx="10" fill="#bcc7d5" />
-                    <rect x="178" y="164" width="38" height="24" rx="10" fill="#7d8ca1" />
-
-                    <rect x="272" y="64" width="38" height="156" rx="10" fill="#eef2f6" />
-                    <rect x="272" y="190" width="38" height="30" rx="10" fill="#bcc7d5" />
-                    <rect x="272" y="158" width="38" height="32" rx="10" fill="#7d8ca1" />
-
-                    <rect x="366" y="108" width="38" height="112" rx="10" fill="#eef2f6" />
-                    <rect x="366" y="195" width="38" height="25" rx="10" fill="#bcc7d5" />
-                    <rect x="366" y="177" width="38" height="18" rx="10" fill="#7d8ca1" />
-
-                    <rect x="460" y="96" width="38" height="124" rx="10" fill="#eef2f6" />
-                    <rect x="460" y="194" width="38" height="26" rx="10" fill="#bcc7d5" />
-                    <rect x="460" y="172" width="38" height="22" rx="10" fill="#7d8ca1" />
-
-                    <rect x="554" y="120" width="38" height="100" rx="10" fill="#eef2f6" />
-                    <rect x="554" y="199" width="38" height="21" rx="10" fill="#bcc7d5" />
-                    <rect x="554" y="183" width="38" height="16" rx="10" fill="#7d8ca1" />
-
-                    <rect x="648" y="74" width="38" height="146" rx="10" fill="#eef2f6" />
-                    <rect x="648" y="190" width="38" height="30" rx="10" fill="#bcc7d5" />
-                    <rect x="648" y="160" width="38" height="30" rx="10" fill="#7d8ca1" />
+                    <rect x="84" y="76" width="38" height="144" rx="10" fill="#eef2f6" /><rect x="84" y="189" width="38" height="31" rx="10" fill="#bcc7d5" /><rect x="84" y="162" width="38" height="27" rx="10" fill="#7d8ca1" />
+                    <rect x="178" y="88" width="38" height="132" rx="10" fill="#eef2f6" /><rect x="178" y="188" width="38" height="32" rx="10" fill="#bcc7d5" /><rect x="178" y="164" width="38" height="24" rx="10" fill="#7d8ca1" />
+                    <rect x="272" y="64" width="38" height="156" rx="10" fill="#eef2f6" /><rect x="272" y="190" width="38" height="30" rx="10" fill="#bcc7d5" /><rect x="272" y="158" width="38" height="32" rx="10" fill="#7d8ca1" />
+                    <rect x="366" y="108" width="38" height="112" rx="10" fill="#eef2f6" /><rect x="366" y="195" width="38" height="25" rx="10" fill="#bcc7d5" /><rect x="366" y="177" width="38" height="18" rx="10" fill="#7d8ca1" />
+                    <rect x="460" y="96" width="38" height="124" rx="10" fill="#eef2f6" /><rect x="460" y="194" width="38" height="26" rx="10" fill="#bcc7d5" /><rect x="460" y="172" width="38" height="22" rx="10" fill="#7d8ca1" />
+                    <rect x="554" y="120" width="38" height="100" rx="10" fill="#eef2f6" /><rect x="554" y="199" width="38" height="21" rx="10" fill="#bcc7d5" /><rect x="554" y="183" width="38" height="16" rx="10" fill="#7d8ca1" />
+                    <rect x="648" y="74" width="38" height="146" rx="10" fill="#eef2f6" /><rect x="648" y="190" width="38" height="30" rx="10" fill="#bcc7d5" /><rect x="648" y="160" width="38" height="30" rx="10" fill="#7d8ca1" />
                   </g>
-
                   <polyline fill="none" stroke="#5f6c82" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" points="103,96 197,90 291,82 385,120 479,102 573,132 667,92" />
-                  <g fill="#5f6c82">
-                    <circle cx="103" cy="96" r="3.6" />
-                    <circle cx="197" cy="90" r="3.6" />
-                    <circle cx="291" cy="82" r="3.6" />
-                    <circle cx="385" cy="120" r="3.6" />
-                    <circle cx="479" cy="102" r="3.6" />
-                    <circle cx="573" cy="132" r="3.6" />
-                    <circle cx="667" cy="92" r="3.6" />
-                  </g>
-
-                  <text x="90" y="246" class="sleep-axis-label">周一</text>
-                  <text x="184" y="246" class="sleep-axis-label">周二</text>
-                  <text x="278" y="246" class="sleep-axis-label">周三</text>
-                  <text x="372" y="246" class="sleep-axis-label">周四</text>
-                  <text x="466" y="246" class="sleep-axis-label">周五</text>
-                  <text x="560" y="246" class="sleep-axis-label">周六</text>
-                  <text x="654" y="246" class="sleep-axis-label">周日</text>
-
+                  <g fill="#5f6c82"><circle cx="103" cy="96" r="3.6" /><circle cx="197" cy="90" r="3.6" /><circle cx="291" cy="82" r="3.6" /><circle cx="385" cy="120" r="3.6" /><circle cx="479" cy="102" r="3.6" /><circle cx="573" cy="132" r="3.6" /><circle cx="667" cy="92" r="3.6" /></g>
+                  <text x="90" y="246" class="sleep-axis-label">周一</text><text x="184" y="246" class="sleep-axis-label">周二</text><text x="278" y="246" class="sleep-axis-label">周三</text><text x="372" y="246" class="sleep-axis-label">周四</text><text x="466" y="246" class="sleep-axis-label">周五</text><text x="560" y="246" class="sleep-axis-label">周六</text><text x="654" y="246" class="sleep-axis-label">周日</text>
                 </svg>
-                <div class="sleep-chart-caption">
-                  <span>周三的睡眠结构最完整，恢复评分也同步来到本周高点。</span>
-                  <span>周六睡眠时长跌破 6 小时后，恢复表现出现全周最明显的回落。</span>
-                </div>
+                <div class="sleep-chart-caption"><span>周三睡眠结构最完整，恢复评分也同步来到本周高点。</span><span>周六睡眠时长跌破 6 小时后，恢复表现出现本周最明显回落。</span></div>
               </div>
-
               <div class="assistant-body">
-                <h3>结果概览</h3>
+                <h3>结论</h3>
                 <ul>
-                  <li>平均总睡眠：7h 06m（目标 7h 30m，缺口 24m）</li>
-                  <li>平均入睡时长：18m；夜间觉醒：1.6 次/晚</li>
-                  <li>深睡均值：1h 24m；REM 均值：1h 31m</li>
-                  <li>睡眠规律性：中等，周三/周六入睡时间明显偏晚</li>
+                  <li>平均总睡眠：7h 06m，离目标还差 24 分钟</li>
+                  <li>平均深睡：1h 24m；平均 REM：1h 31m</li>
+                  <li>睡眠规律性一般，周三和周六入睡时间明显偏晚</li>
                 </ul>
-                <h3>图表结论</h3>
-                <p>图表里最明显的特征是：周三睡眠结构最完整，次日恢复评分同步来到本周高点；周六总睡眠不足 6 小时后，恢复评分出现最明显下滑。</p>
-                <h3>恢复关联</h3>
+                <h3>建议</h3>
+                <p>你现在最大的问题不是睡太少，而是睡眠波动和高负荷日后的恢复不完整。把入睡时间收紧到 23:00-23:30，并在高强度日后强制补 30 分钟恢复活动，会比单纯加睡更有效。</p>
+              </div>
+            </section>
+          </section>
+
+          <section class="conversation" data-chat-id="training-review">
+            <div class="user-turn">我最近两周是不是练多了？下周还能继续加量吗？</div>
+            <section class="assistant-turn compact">
+              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>训练复盘 · 负荷判断</span></div>
+              <div class="assistant-body">
+                <h3>概览</h3>
+                <p>我对比了你最近 14 天的训练负荷、恢复状态和静息心率趋势。当前不是过载，但已经接近你最近一段时间的高位区间。</p>
+                <h3>关键指标</h3>
                 <ul>
-                  <li>睡眠评分均值：79/100；恢复评分均值：74/100</li>
-                  <li>高负荷训练后 24h 内，静息心率平均抬升 +2 bpm</li>
-                  <li>当总睡眠低于 6h 40m 时，次日主观疲劳显著增加</li>
+                  <li>14 日总训练量：1,286</li>
+                  <li>7 日训练量 / 42 日 Base Fitness：684 / 612</li>
+                  <li>恢复评分近 3 天均值：71/100</li>
+                  <li>静息心率较上周：+1.8 bpm</li>
                 </ul>
-                <h3>简短解读</h3>
-                <p>你当前不是“睡得少”，而是“睡眠时间波动 + 高负荷日恢复不足”。这会直接影响高强度训练质量和户外长距离稳定性。</p>
+                <h3>简短判断</h3>
+                <p>你现在更适合维持训练频率、控制强度密度，而不是继续叠加高质量课。下周如果要加量，建议只加低强度时长，不加阈值或 VO2max 训练。</p>
                 <h3>建议</h3>
                 <ul>
-                  <li>把入睡时间窗口收敛到 23:00-23:30，连续执行 7 天</li>
-                  <li>高强度日后强制补 30-40 分钟低强度恢复活动</li>
-                  <li>若连续两天恢复评分 &lt; 70，第三天改为轻松跑/休息</li>
+                  <li>保留 1 次关键课，其他训练以轻松跑或恢复骑行为主</li>
+                  <li>如果恢复评分连续 2 天低于 70，主动下调 15%-20% 训练量</li>
                 </ul>
               </div>
             </section>
           </section>
 
-          <section class="conversation" data-chat-id="hongkong">
-            <div class="user-turn">@komoot 推荐几条香港的徒步路线给我。</div>
-
-            <section class="assistant-turn">
-              <p class="assistant-lead">我先直接帮你从 Komoot 找香港的徒步路线，优先给你几条适合入门到进阶都能选的。</p>
-              <div class="thinking">已思考 11s</div>
-
-              <div class="source-row">
-                <span class="source-dot" aria-hidden="true"></span>
-                <span>komoot</span>
-              </div>
-
-              <div class="cards">
-                <a href="#" class="route-card" data-demo-target="Komoot 路线详情">
-                  <div class="cover easy"><span class="badge easy">Easy</span></div>
-                  <div class="route-meta">📍 Hong Kong, China</div>
-                  <div class="route-title">Banyan Tree Park – Lugard Falls loop from ...</div>
-                  <div class="route-stats">↔ 2.65 mi ・ ◴ 01:17 h ・ ☆ 4.9</div>
-                </a>
-
-                <a href="#" class="route-card" data-demo-target="Komoot 路线详情">
-                  <div class="cover hard"><span class="badge hard">Hard</span></div>
-                  <div class="route-meta">📍 Hong Kong, China</div>
-                  <div class="route-title">Lugard Falls – Banyan Tree Park loop from L...</div>
-                  <div class="route-stats">↔ 7.51 mi ・ ◴ 03:56 h ・ ☆ 4.8</div>
-                </a>
-
-                <a href="#" class="route-card" data-demo-target="Komoot 路线详情">
-                  <div class="cover moderate"><span class="badge moderate">Moderate</span></div>
-                  <div class="route-meta">📍 Hong Kong, China</div>
-                  <div class="route-title">Lion Rock Summit – Lion Rock (Lion's Head) loo...</div>
-                  <div class="route-stats">↔ 5.22 mi ・ ◴ 02:59 h ・ ☆ 4.6</div>
-                </a>
-              </div>
-
-              <hr class="paragraph-divider" />
-
-              <div class="assistant-body">
-                <p>我给你找了一批香港附近的热门徒步路线，里面有海岸线、山脊线和城市近郊路线，强度从相对轻松到偏进阶都有。你可以先看上面的路线卡片挑方向。</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros 结合我的体能模型，分析一下我大概要用多久时间能走完这条路线。</div>
-
+          <section class="conversation" data-chat-id="zones-fitness">
+            <div class="user-turn">我现在的心率区、配速区和体能模型是什么？</div>
             <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>路线耗时 · 体能模型估算</span></div>
-              <p class="assistant-lead">已调用 Coros 体能模型（近 8 周跑步负荷 + 徒步历史 + 恢复状态）对你选中的路线进行估算。</p>
-              <div class="thinking">已思考 9s</div>
-
+              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>训练区 · 体能模型</span></div>
               <div class="assistant-body">
-                <h3>时间预估</h3>
-                <ul>
-                  <li>稳态完成：3h 45m - 4h 20m</li>
-                  <li>保守完成（含拍照/补给）：4h 30m - 5h 05m</li>
-                </ul>
-                <h3>模型依据</h3>
-                <ul>
-                  <li>你的最近 30 天上坡效率高于同配速人群约 11%</li>
-                  <li>长距离后半程心率漂移控制较好（均值 6.8%）</li>
-                  <li>近 7 天恢复评分均值 74/100，属于可完成强度</li>
-                </ul>
-                <h3>执行建议</h3>
-                <p>如果你希望把体感压力控制在舒适区间，建议按 4h 30m 左右去规划补给和停留点；若当天气温偏高或前一晚恢复不足，优先参考保守区间。</p>
+                <h3>概览</h3>
+                <p>你的训练区配置和体能模型已经同步完成。下面这组结果更适合直接拿来指导训练强度。</p>
+              </div>
+              <div class="zone-grid">
+                <article class="info-card"><h4>心率区</h4><p>Z1 118-132 bpm<br>Z2 133-148 bpm<br>Z3 149-161 bpm<br>Z4 162-173 bpm<br>Z5 174+ bpm</p></article>
+                <article class="info-card"><h4>配速区</h4><p>轻松跑 5'45"-6'12"/km<br>稳态跑 5'05"-5'25"/km<br>阈值跑 4'28"-4'42"/km<br>间歇 4'05"-4'18"/km</p></article>
+                <article class="info-card"><h4>体能模型</h4><p>VO2Max 54<br>马拉松预测 3:24:40<br>爬升效率高于 90 天均值 8%</p></article>
+              </div>
+              <div class="assistant-body">
+                <h3>简短判断</h3>
+                <p>你当前最适合继续强化稳态耐力和坡度持续输出。训练区本身没有异常，关键是不要把阈值段和高爬升连续堆在一起。</p>
               </div>
             </section>
           </section>
 
-          <section class="conversation active" data-chat-id="analysis">
-            <div class="file-chip">
-              <div class="file-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"></path>
-                  <path d="M14 2v5h5"></path>
-                </svg>
+          <section class="conversation" data-chat-id="training-calendar">
+            <div class="user-turn">帮我看下这周后面几天怎么安排的，周末那节具体是什么内容？</div>
+            <section class="assistant-turn compact">
+              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>训练日历 · 只读查询</span></div>
+              <div class="assistant-body">
+                <h3>概览</h3>
+                <p>我按训练日历读取了你接下来 5 天的安排。整体是“1 次关键课 + 2 次恢复训练 + 1 次长距离”的结构。</p>
               </div>
-              <div>
-                <div class="file-name">武功山反穿.kml</div>
-                <div class="file-type">文件</div>
+              <div class="calendar-grid">
+                <article class="info-card"><h4>周四</h4><p>恢复跑 45 分钟，目标保持在心率 Z1-Z2。</p></article>
+                <article class="info-card"><h4>周五</h4><p>休息 / 可选 30 分钟恢复骑行。</p></article>
+                <article class="info-card"><h4>周六</h4><p>长距离越野徒步 4 小时，重点是爬升配速和补给节奏。</p></article>
+                <article class="info-card"><h4>周日</h4><p>轻松跑 10 km，结束后做下肢放松。</p></article>
               </div>
-            </div>
-            <div class="user-turn">@Coros 结合我的体能模型，分析一下我大概要用多久时间能走完这条路线。</div>
+              <div class="assistant-body">
+                <h3>周末重点</h3>
+                <p>周六这节不是冲强度，而是稳定长时间输出。建议按保守配速走，优先练补给和爬升节奏，不要把它做成比赛模拟。</p>
+              </div>
+            </section>
+          </section>
 
+          <section class="conversation" data-chat-id="device-account">
+            <div class="user-turn">我现在绑了哪些设备？保修还有多久？另外授权给了哪些客户端？</div>
+            <section class="assistant-turn compact">
+              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>设备与账户 · 服务状态</span></div>
+              <div class="assistant-body">
+                <h3>概览</h3>
+                <p>当前账号下共绑定 2 台设备，设备状态都正常；第三方访问目前有 2 个有效连接，没有看到异常授权。</p>
+              </div>
+              <div class="calendar-grid">
+                <article class="info-card"><h4>VERTIX 2S</h4><p>保修有效至 2027-05-18<br>蓝牙 ID：A4:C1:38:7D:91:2F</p></article>
+                <article class="info-card"><h4>PACE 3</h4><p>保修有效至 2026-11-02<br>蓝牙 ID：7C:9E:BD:41:63:88</p></article>
+                <article class="info-card"><h4>授权状态</h4><p>当前授权范围：活动、睡眠、设备、EvoLab 指标<br>已连接客户端：ChatGPT、OpenClaw Bridge</p></article>
+              </div>
+              <div class="assistant-body">
+                <h3>简短判断</h3>
+                <p>当前没有保修或绑定风险。要调整第三方访问范围，可以直接在 COROS App 的「设置 - 第三方 APP」里处理。</p>
+              </div>
+            </section>
+          </section>
+
+          <section class="conversation" data-chat-id="route-estimate">
+            <div class="file-chip">
+              <div class="file-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"></path><path d="M14 2v5h5"></path></svg></div>
+              <div><div class="file-name">武功山反穿.kml</div><div class="file-type">文件</div></div>
+            </div>
+            <div class="user-turn">这条线按我现在状态，大概要走多久？</div>
             <section class="assistant-turn">
               <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>KML 路线解析 · 体能模型估算</span></div>
-              <p class="assistant-lead">我已按 Coros 体能模型 + 这份 KML 的地形参数重算你的完赛时间。模型考虑了你近 8 周训练量、静息心率趋势和最近恢复状态。</p>
+              <p class="assistant-lead">我用你的 Coros 体能模型加上这份 KML 的地形参数重新算了一次时间区间，模型会考虑你最近 8 周的训练负荷和恢复状态。</p>
               <div class="thinking">已思考 5m 35s</div>
-
               <div class="assistant-body">
-                <h3>时间预估</h3>
+                <h3>估算结果</h3>
                 <ul>
                   <li>理想状态（轻装、停留少）：10h 10m - 11h 05m</li>
                   <li>常规完成（拍照 + 正常补给）：11h 20m - 12h 40m</li>
-                  <li>保守完成（重装/天气一般）：13h 00m - 14h 20m</li>
+                  <li>保守完成（重装 / 天气一般）：13h 00m - 14h 20m</li>
                 </ul>
-                <p>如果你要把风险和疲劳控制在合理区间，建议按两日完成，会明显更稳。</p>
               </div>
-
               <hr class="paragraph-divider" />
-
               <div class="assistant-body">
-                <h3>模型依据</h3>
+                <h3>依据</h3>
                 <ul>
                   <li>KML 线路：24.43 km，累计爬升约 2200 m</li>
-                  <li>你的上坡效率：高于个体近 90 天均值约 8%</li>
-                  <li>恢复评分：过去 7 天均值 73/100，存在轻微波动</li>
-                  <li>下坡段疲劳敏感：连续长下坡后配速衰减更明显</li>
+                  <li>你的上坡效率：高于近 90 天均值约 8%</li>
+                  <li>过去 7 天恢复评分均值：73/100</li>
+                  <li>连续长下坡后，下肢疲劳敏感度较高</li>
                 </ul>
                 <h3>执行建议</h3>
-                <p>如果你的目标是单日完成，建议按“常规完成”区间做补给、出发时间和天气预案；如果更看重体验与安全，两日完成会更符合你当前模型下的稳定输出能力。</p>
+                <p>如果要单日完成，建议按“常规完成”区间规划补给和出发时间；如果更看重体验和安全，两日完成更符合你当前模型下的稳定输出能力。</p>
               </div>
             </section>
           </section>
 
+          <section class="conversation" data-chat-id="phase-two-preview">
+            <div class="user-turn">后面还能做什么？你先给我看下未来方向。</div>
+            <section class="assistant-turn compact">
+              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>二期能力预览 · 方向展示</span></div>
+              <div class="assistant-body">
+                <h3>概览</h3>
+                <p>下面这些方向都属于二期能力预览。它们会延续当前查询和分析能力，但会更偏向跨应用联动、主动建议和生成式能力。</p>
+              </div>
+              <div class="preview-grid">
+                <article class="preview-card"><div class="status-chip">二期内容</div><h4>香港徒步路线推荐</h4><p><strong>用户会问：</strong>“帮我找几条适合周末走的香港徒步路线。”<br><strong>会返回：</strong>先拿到外部路线候选，再结合 Coros 体能模型估算难度和耗时。</p></article>
+                <article class="preview-card"><div class="status-chip">二期内容</div><h4>恢复教练</h4><p><strong>用户会问：</strong>“我今天适合跑间歇吗？”<br><strong>会返回：</strong>结合睡眠、HRV、静息心率和训练负荷给出训练强度建议。</p></article>
+                <article class="preview-card"><div class="status-chip">二期内容</div><h4>赛事准备场景</h4><p><strong>用户会问：</strong>“我四周后跑半马，按现在状态目标配速合理吗？”<br><strong>会返回：</strong>目标可行性判断、备赛风险和接下来几周的训练建议。</p></article>
+                <article class="preview-card"><div class="status-chip">二期内容</div><h4>水印照片</h4><p><strong>用户会问：</strong>“把我昨天那次跑步做成能发朋友圈的图。”<br><strong>会返回：</strong>带成绩、路线和关键指标的分享图。</p></article>
+                <article class="preview-card"><div class="status-chip">二期内容</div><h4>自定义表盘</h4><p><strong>用户会问：</strong>“帮我配一个适合越野训练的表盘。”<br><strong>会返回：</strong>基于设备型号和偏好生成表盘配置方案。</p></article>
+                <article class="preview-card"><div class="status-chip">二期内容</div><h4>生成训练计划</h4><p><strong>用户会问：</strong>“按我现在状态，帮我排一周训练计划。”<br><strong>会返回：</strong>结合体能模型、恢复状态和目标生成阶段性安排。</p></article>
+                <article class="preview-card"><div class="status-chip">二期内容</div><h4>活动文件导出 / 外部工作流联动</h4><p><strong>用户会问：</strong>“把这次活动导出给别的工具继续分析。”<br><strong>会返回：</strong>标准文件导出和面向外部工作流的连接能力。</p></article>
+              </div>
+            </section>
+          </section>
+
+
           <div class="composer-wrap">
             <form class="composer" action="#" onsubmit="return false">
-              <textarea class="composer-input">@Coros 结合我的体能模型，分析一下我大概要用多久时间能走完这条路线</textarea>
+              <textarea class="composer-input">我最近都练了什么？先帮我看一眼。</textarea>
 
               <div class="composer-actions">
                 <div class="composer-left">
@@ -2333,7 +2245,7 @@
                     <div class="app-by">企业内部应用</div>
                   </div>
                 </div>
-                <p class="app-desc">读取活动、睡眠、设备与 EvoLab 指标，支持训练负荷、恢复状态、FTP 与路线完赛时间联动分析。</p>
+                <p class="app-desc">读取活动、睡眠、设备、训练日历与 EvoLab 指标，支持训练复盘、恢复判断、设备服务和路线完赛时间分析。</p>
                 <div class="app-meta"><span>数据分析 · 健身智能</span><span>New</span></div>
               </article>
 
@@ -2443,9 +2355,9 @@
                   <li>结合路线距离、爬升和用户能力模型，估算徒步/越野完赛时间</li>
                 </ul>
                 <div class="prompt-chips">
-                  <span>@Coros 查我近 30 天的训练负荷</span>
-                  <span>@Coros 分析最近 7 天睡眠与恢复</span>
-                  <span>@Coros 结合体能模型估算路线耗时</span>
+                  <span>@Coros 我最近是不是练多了</span>
+                  <span>@Coros 帮我看下这周训练安排</span>
+                  <span>@Coros 这条路线按我现在状态要走多久</span>
                 </div>
                 <div class="privacy-box">
                   <strong>授权范围</strong>
@@ -2588,14 +2500,19 @@
 
     let currentLanguage = localStorage.getItem("coros-demo-language") || "zh";
     let currentView = document.querySelector("[data-view].active")?.dataset.view || "chat";
-    let currentChat = document.querySelector(".conversation.active")?.dataset.chatId || "analysis";
+    let currentChat = document.querySelector(".conversation.active")?.dataset.chatId || "coros-basic";
 
     const conversationSeedZh = {
       "coros-basic": document.querySelector('[data-chat-id="coros-basic"]').innerHTML,
       "sleep-analysis": document.querySelector('[data-chat-id="sleep-analysis"]').innerHTML,
-      hongkong: document.querySelector('[data-chat-id="hongkong"]').innerHTML,
-      analysis: document.querySelector('[data-chat-id="analysis"]').innerHTML
+      "training-review": document.querySelector('[data-chat-id="training-review"]').innerHTML,
+      "zones-fitness": document.querySelector('[data-chat-id="zones-fitness"]').innerHTML,
+      "training-calendar": document.querySelector('[data-chat-id="training-calendar"]').innerHTML,
+      "device-account": document.querySelector('[data-chat-id="device-account"]').innerHTML,
+      "route-estimate": document.querySelector('[data-chat-id="route-estimate"]').innerHTML,
+      "phase-two-preview": document.querySelector('[data-chat-id="phase-two-preview"]').innerHTML
     };
+    const conversationSeedEn = { ...conversationSeedZh };
 
     const appsPageSeedZh = appsPageContainer.innerHTML;
     const appDetailSeedZh = appDetailContainer.innerHTML;
@@ -2619,14 +2536,21 @@
         chatLabels: {
           "coros-basic": "Coros基本数据查询",
           "sleep-analysis": "睡眠数据分析",
-          hongkong: "香港徒步路线推荐",
-          analysis: "路线分析与预计时间"
+          "training-review": "训练复盘与负荷判断",
+          "zones-fitness": "训练区与体能模型查询",
+          "training-calendar": "训练日历查询",
+          "device-account": "设备与账户服务场景",
+          "route-estimate": "路线分析与预计时间",
+          "phase-two-preview": "二期能力预览"
         },
         mobileChatLabels: {
           "coros-basic": "基础查询",
           "sleep-analysis": "睡眠分析",
-          hongkong: "路线推荐",
-          analysis: "路线预估"
+          "training-review": "训练复盘",
+          "training-calendar": "训练日历",
+          "device-account": "账户服务",
+          "route-estimate": "路线预估",
+          "phase-two-preview": "二期预览"
         },
         mobileViewLabels: {
           apps: "应用",
@@ -2650,16 +2574,23 @@
         disclaimer:
           'ChatGPT can make mistakes. Check important info. See&nbsp;<a href="#" data-demo-target="Cookie preferences">Cookie Preferences</a>.',
         chatLabels: {
-          "coros-basic": "Coros Data Queries",
-          "sleep-analysis": "Sleep Analysis",
-          hongkong: "Hong Kong Hike Ideas",
-          analysis: "Route Timing Estimate"
+          "coros-basic": "Core data queries",
+          "sleep-analysis": "Sleep analysis",
+          "training-review": "Training review",
+          "zones-fitness": "Zones and fitness model",
+          "training-calendar": "Training calendar",
+          "device-account": "Device and account services",
+          "route-estimate": "Route timing estimate",
+          "phase-two-preview": "Phase-two preview"
         },
         mobileChatLabels: {
           "coros-basic": "Queries",
           "sleep-analysis": "Sleep",
-          hongkong: "Routes",
-          analysis: "Estimate"
+          "training-review": "Review",
+          "training-calendar": "Calendar",
+          "device-account": "Account",
+          "route-estimate": "Route",
+          "phase-two-preview": "Phase 2"
         },
         mobileViewLabels: {
           apps: "Apps",
@@ -2673,16 +2604,24 @@
 
     const composerDraftsByLang = {
       zh: {
-        "coros-basic": "@Coros 拉取我近 30 天的训练与恢复摘要",
-        "sleep-analysis": "@Coros 分析我近 7 天睡眠和恢复关系",
-        hongkong: "@Coros 结合我的体能模型，分析一下我大概要用多久时间能走完这条路线",
-        analysis: "@Coros 结合我的体能模型，分析一下我大概要用多久时间能走完这条路线"
+        "coros-basic": "我最近都练了什么？先帮我看一眼。",
+        "sleep-analysis": "我这周睡得怎么样？顺便看看恢复。",
+        "training-review": "我最近两周是不是练多了？下周还能继续加量吗？",
+        "zones-fitness": "我现在的心率区、配速区和体能模型是什么？",
+        "training-calendar": "帮我看下这周后面几天怎么安排的。",
+        "device-account": "我现在绑了哪些设备？授权状态也顺便看下。",
+        "route-estimate": "这条线按我现在状态，大概要走多久？",
+        "phase-two-preview": "后面还能做什么？先给我看下未来方向。"
       },
       en: {
-        "coros-basic": "@Coros pull a summary of my training and recovery over the last 30 days",
-        "sleep-analysis": "@Coros analyze my sleep and recovery trends for the last 7 days",
-        hongkong: "@Coros estimate how long it would take me to finish this route based on my fitness model",
-        analysis: "@Coros estimate how long it would take me to finish this route based on my fitness model"
+        "coros-basic": "What have I been doing lately? Give me a quick overview.",
+        "sleep-analysis": "How did I sleep this week? Check recovery too.",
+        "training-review": "Have I been overdoing it lately? Can I add more next week?",
+        "zones-fitness": "What are my heart-rate zones, pace zones, and current fitness model?",
+        "training-calendar": "Show me the rest of this week's training plan.",
+        "device-account": "Which devices are linked to my account, and what's my access status?",
+        "route-estimate": "How long would this route take me right now?",
+        "phase-two-preview": "What else could this support later? Show me the roadmap."
       }
     };
 
@@ -2715,7 +2654,7 @@
                   <div class="app-by">Internal app</div>
                 </div>
               </div>
-              <p class="app-desc">Read activity, sleep, device, and EvoLab metrics, then combine them with training load, recovery status, FTP, and route completion analysis.</p>
+              <p class="app-desc">Read activity, sleep, device, training calendar, and EvoLab metrics, then combine them with recovery review, service status, and route timing analysis.</p>
               <div class="app-meta"><span>Analytics · Fitness intelligence</span><span>New</span></div>
             </article>
 
@@ -2825,9 +2764,9 @@
                 <li>Estimate hiking or trail completion time using route distance, elevation gain, and a user fitness model</li>
               </ul>
               <div class="prompt-chips">
-                <span>@Coros check my training load over the last 30 days</span>
-                <span>@Coros analyze my sleep and recovery from the last 7 days</span>
-                <span>@Coros estimate route duration using my fitness model</span>
+                <span>@Coros am I overtraining lately?</span>
+                <span>@Coros show me the rest of this week's plan</span>
+                <span>@Coros how long would this route take me?</span>
               </div>
               <div class="privacy-box">
                 <strong>Permission scope</strong>
@@ -2904,399 +2843,7 @@
       },
       conversations: {
         zh: conversationSeedZh,
-        en: {
-          "coros-basic": `
-            <div class="user-turn">@Coros first, pull my activity history.</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>Activities · live read</span></div>
-              <div class="assistant-body">
-                <h3>Overview</h3>
-                <p>Your recent 30-day history is synced. You completed 42 workouts totaling 46h 12m, with running and cycling contributing most of the load. The cards below summarize the last 7 days and are a good starting point for a deeper drill-down.</p>
-              </div>
-              <div class="workout-cards">
-                <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">Clear Water Bay endurance run</div>
-                    <span class="workout-card-type">Run</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>Yesterday</span>
-                    <span>14.2 km</span>
-                    <span>1h 18m</span>
-                    <span>Avg HR 148 bpm</span>
-                  </div>
-                </article>
-                <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">Tai Mo Shan climbing ride</div>
-                    <span class="workout-card-type">Ride</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>3 days ago</span>
-                    <span>52.4 km</span>
-                    <span>2h 06m</span>
-                    <span>Elevation 812 m</span>
-                  </div>
-                </article>
-                <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">MacLehose recovery hike</div>
-                    <span class="workout-card-type">Hike</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>6 days ago</span>
-                    <span>9.8 km</span>
-                    <span>2h 31m</span>
-                    <span>Avg pace 15'23"/km</span>
-                  </div>
-                </article>
-                <article class="workout-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">Sai Kung easy run</div>
-                    <span class="workout-card-type">Run</span>
-                  </div>
-                  <div class="workout-card-meta">
-                    <span>7 days ago</span>
-                    <span>8.6 km</span>
-                    <span>48m</span>
-                    <span>Load 86</span>
-                  </div>
-                </article>
-                <article class="workout-card workout-more-card">
-                  <div class="workout-card-head">
-                    <div class="workout-card-title">See more</div>
-                    <span class="workout-card-type">COROS App</span>
-                  </div>
-                  <p>Open the COROS App to view the full 7-day activity list, workout detail pages, routes, and EvoLab metrics for each session.</p>
-                  <a class="workout-more-link" href="javascript:void(0)">Open activity history ›</a>
-                </article>
-              </div>
-              <div class="assistant-body">
-                <h3>Quick read</h3>
-                <p>The last 7 days are balanced around two runs, one ride, and one hike. That pattern suggests you are maintaining both aerobic base and climbing adaptation. The latest run and ride both landed in the medium-to-high quality range.</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros now show my workout calories.</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>Calories · training summary</span></div>
-              <div class="assistant-body">
-                <h3>Overview</h3>
-                <p>Total workout burn over the last 30 days is 28,640 kcal, with an average of 682 kcal per session. The highest single-session burn in the last 7 days was the Tai Mo Shan climbing ride at 1,124 kcal.</p>
-                <h3>By sport</h3>
-                <ul>
-                  <li>Running: highest burn rate per unit time, average 742 kcal per session</li>
-                  <li>Cycling: highest total calorie contribution due to longer session duration</li>
-                  <li>Hiking: steadier burn profile, useful for recovery weeks and low-impact load</li>
-                </ul>
-                <h3>Quick read</h3>
-                <p>Your current calorie profile is driven mainly by running and cycling. That matches a mixed endurance focus. To control fatigue, treat high-burn rides as sessions that should be followed by low-impact recovery work.</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros check my heart rate and resting heart rate too.</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>Heart rate · resting heart rate</span></div>
-              <div class="assistant-body">
-                <h3>Workout heart rate</h3>
-                <p>Average exercise heart rate is 142 bpm. Time in Z4-Z5 accounts for 21%, which indicates a relatively high share of quality work during the last week.</p>
-                <h3>Resting heart rate trend</h3>
-                <p>Your 7-day average resting heart rate is 48 bpm, up by 1.8 bpm versus the previous 7 days. The change is still small, but it starts to reflect accumulating recovery stress.</p>
-                <h3>Risk signal</h3>
-                <p>If resting HR continues to rise over the next 3 days while recovery scores trend down, reduce session density and avoid stacking high-quality workouts too closely.</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros give me recovery and training load status as well.</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>EvoLab · recovery and training state</span></div>
-              <div class="assistant-body">
-                <h3>Recovery status</h3>
-                <p>Your average recovery score is 73/100. The last 3 days trended down, but not into an abnormal zone. This looks more like cumulative training stress than a single outlier event.</p>
-                <h3>Training load</h3>
-                <p>7-day load is 684, near the top end of your Optimized range. Against your 42-day Base Fitness, the load is still manageable, but close to your recent stable ceiling.</p>
-                <h3>Current assessment</h3>
-                <p>Keep frequency stable, but avoid increasing the share of high-intensity sessions. A better mix now is one key session plus easier runs, recovery rides, or low-intensity hiking.</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros what about running ability, cycling ability, and my PRs?</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>Ability profile · records</span></div>
-              <div class="assistant-body">
-                <h3>Running ability</h3>
-                <p>VO2Max is 54 and predicted marathon time is 3:24:40. That points to a stable aerobic base and mature long-distance pacing control.</p>
-                <h3>Cycling ability</h3>
-                <p>FTP is 236W (3.28 W/kg), up 6W over the last 4 weeks. Climbing output stability is improving versus the previous cycle.</p>
-                <h3>Personal records</h3>
-                <ul>
-                  <li>5K: 20:31</li>
-                  <li>10K: 43:48</li>
-                  <li>Half marathon: 1:39:12</li>
-                </ul>
-                <h3>Quick read</h3>
-                <p>Your profile is best described as mixed-endurance: running is the primary strength, cycling is improving sustained power and climbing durability, and both support trail, hiking, and multi-sport analysis well.</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros finally, check device status: number of devices, warranty, and Bluetooth IDs.</div>
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>Device assets · account binding</span></div>
-              <div class="assistant-body">
-                <h3>Device overview</h3>
-                <p>Your account currently has 2 devices bound: VERTIX 2S and PACE 3. Both are in normal active use.</p>
-                <h3>Warranty status</h3>
-                <ul>
-                  <li>VERTIX 2S: covered through 2027-05-18, support status normal</li>
-                  <li>PACE 3: covered through 2026-11-02, support status normal</li>
-                </ul>
-                <h3>Identification info</h3>
-                <p>The Bluetooth IDs are A4:C1:38:7D:91:2F and 7C:9E:BD:41:63:88. These are useful for connection diagnostics and support-side device tracing.</p>
-                <h3>Quick note</h3>
-                <p>If you need to unbind a device or manage third-party access, you can do it directly in the COROS App. Right now there are no warranty or binding risks visible on either device.</p>
-              </div>
-            </section>
-          `,
-          "sleep-analysis": `
-            <div class="user-turn">@Coros check my sleep over the last 7 days and analyze my recovery state.</div>
-
-            <section class="assistant-turn">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>Sleep quality · recovery analysis</span></div>
-              <p class="assistant-lead">I aligned your 7-day sleep and recovery metrics and summarized them first, then added practical guidance.</p>
-              <div class="thinking">Reasoned for 12s</div>
-
-              <div class="metric-strip">
-                <div class="metric-tile">
-                  <div class="metric-tile-label">Avg sleep</div>
-                  <div class="metric-tile-value">7h 06m</div>
-                  <div class="metric-tile-sub">24 min below target</div>
-                </div>
-                <div class="metric-tile">
-                  <div class="metric-tile-label">Avg sleep score</div>
-                  <div class="metric-tile-value">79</div>
-                  <div class="metric-tile-sub">Good range</div>
-                </div>
-                <div class="metric-tile">
-                  <div class="metric-tile-label">Avg recovery score</div>
-                  <div class="metric-tile-value">74</div>
-                  <div class="metric-tile-sub">Thursday and Saturday dropped</div>
-                </div>
-              </div>
-
-              <div class="sleep-chart-card">
-                <div class="sleep-chart-head">
-                  <div>
-                    <div class="sleep-chart-title">7-day sleep and recovery trend</div>
-                    <div class="sleep-chart-sub">Sleep bars show duration and structure. The line tracks the next-day recovery score.</div>
-                  </div>
-                  <div class="sleep-chart-legend">
-                    <span><i class="legend-dot total"></i>Total sleep</span>
-                    <span><i class="legend-dot deep"></i>Deep sleep</span>
-                    <span><i class="legend-dot rem"></i>REM</span>
-                    <span><i class="legend-dot recovery"></i>Recovery</span>
-                  </div>
-                </div>
-                <svg class="sleep-chart" viewBox="0 0 760 280" aria-label="7-day sleep and recovery chart">
-                  <line x1="50" y1="36" x2="50" y2="220" stroke="#e8edf2" />
-                  <line x1="50" y1="220" x2="732" y2="220" stroke="#e8edf2" />
-                  <line x1="50" y1="82" x2="732" y2="82" stroke="#f4f6f8" />
-                  <line x1="50" y1="128" x2="732" y2="128" stroke="#f4f6f8" />
-                  <line x1="50" y1="174" x2="732" y2="174" stroke="#f4f6f8" />
-
-                  <text x="18" y="222" class="sleep-axis-label">0h</text>
-                  <text x="12" y="178" class="sleep-axis-label">3h</text>
-                  <text x="12" y="132" class="sleep-axis-label">6h</text>
-                  <text x="12" y="86" class="sleep-axis-label">9h</text>
-
-                  <g>
-                    <rect x="84" y="76" width="38" height="144" rx="10" fill="#eef2f6" />
-                    <rect x="84" y="189" width="38" height="31" rx="10" fill="#bcc7d5" />
-                    <rect x="84" y="162" width="38" height="27" rx="10" fill="#7d8ca1" />
-                    <rect x="178" y="88" width="38" height="132" rx="10" fill="#eef2f6" />
-                    <rect x="178" y="188" width="38" height="32" rx="10" fill="#bcc7d5" />
-                    <rect x="178" y="164" width="38" height="24" rx="10" fill="#7d8ca1" />
-                    <rect x="272" y="64" width="38" height="156" rx="10" fill="#eef2f6" />
-                    <rect x="272" y="190" width="38" height="30" rx="10" fill="#bcc7d5" />
-                    <rect x="272" y="158" width="38" height="32" rx="10" fill="#7d8ca1" />
-                    <rect x="366" y="108" width="38" height="112" rx="10" fill="#eef2f6" />
-                    <rect x="366" y="195" width="38" height="25" rx="10" fill="#bcc7d5" />
-                    <rect x="366" y="177" width="38" height="18" rx="10" fill="#7d8ca1" />
-                    <rect x="460" y="96" width="38" height="124" rx="10" fill="#eef2f6" />
-                    <rect x="460" y="194" width="38" height="26" rx="10" fill="#bcc7d5" />
-                    <rect x="460" y="172" width="38" height="22" rx="10" fill="#7d8ca1" />
-                    <rect x="554" y="120" width="38" height="100" rx="10" fill="#eef2f6" />
-                    <rect x="554" y="199" width="38" height="21" rx="10" fill="#bcc7d5" />
-                    <rect x="554" y="183" width="38" height="16" rx="10" fill="#7d8ca1" />
-                    <rect x="648" y="74" width="38" height="146" rx="10" fill="#eef2f6" />
-                    <rect x="648" y="190" width="38" height="30" rx="10" fill="#bcc7d5" />
-                    <rect x="648" y="160" width="38" height="30" rx="10" fill="#7d8ca1" />
-                  </g>
-
-                  <polyline fill="none" stroke="#5f6c82" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" points="103,96 197,90 291,82 385,120 479,102 573,132 667,92" />
-                  <g fill="#5f6c82">
-                    <circle cx="103" cy="96" r="3.6" />
-                    <circle cx="197" cy="90" r="3.6" />
-                    <circle cx="291" cy="82" r="3.6" />
-                    <circle cx="385" cy="120" r="3.6" />
-                    <circle cx="479" cy="102" r="3.6" />
-                    <circle cx="573" cy="132" r="3.6" />
-                    <circle cx="667" cy="92" r="3.6" />
-                  </g>
-
-                  <text x="88" y="246" class="sleep-axis-label">Mon</text>
-                  <text x="182" y="246" class="sleep-axis-label">Tue</text>
-                  <text x="276" y="246" class="sleep-axis-label">Wed</text>
-                  <text x="370" y="246" class="sleep-axis-label">Thu</text>
-                  <text x="464" y="246" class="sleep-axis-label">Fri</text>
-                  <text x="558" y="246" class="sleep-axis-label">Sat</text>
-                  <text x="652" y="246" class="sleep-axis-label">Sun</text>
-
-                </svg>
-                <div class="sleep-chart-caption">
-                  <span>Wednesday shows the most complete sleep structure and also the strongest next-day recovery score.</span>
-                  <span>Saturday falls below 6 hours of sleep and marks the clearest recovery drop of the week.</span>
-                </div>
-              </div>
-
-              <div class="assistant-body">
-                <h3>Overview</h3>
-                <ul>
-                  <li>Average total sleep: 7h 06m (target 7h 30m, short by 24m)</li>
-                  <li>Average sleep onset: 18m; nighttime awakenings: 1.6 per night</li>
-                  <li>Average deep sleep: 1h 24m; average REM: 1h 31m</li>
-                  <li>Sleep regularity: moderate, with noticeably later bedtimes on Wednesday and Saturday</li>
-                </ul>
-                <h3>Chart takeaway</h3>
-                <p>The most obvious pattern is that Wednesday had the best sleep structure and also the highest next-day recovery score, while Saturday fell below 6 hours and produced the sharpest recovery drop.</p>
-                <h3>Recovery relationship</h3>
-                <ul>
-                  <li>Average sleep score: 79/100; average recovery score: 74/100</li>
-                  <li>Within 24h after high-load sessions, resting HR increases by about 2 bpm</li>
-                  <li>When total sleep drops below 6h 40m, subjective fatigue rises clearly the next day</li>
-                </ul>
-                <h3>Quick read</h3>
-                <p>The main issue is not simply low sleep volume. It is sleep variability combined with incomplete recovery after high-load days. That will directly affect workout quality and long outdoor sessions.</p>
-                <h3>Recommendation</h3>
-                <ul>
-                  <li>Tighten your bedtime window to 23:00-23:30 for the next 7 days</li>
-                  <li>After high-intensity days, force a 30-40 minute low-intensity recovery block</li>
-                  <li>If recovery score stays below 70 for two consecutive days, make day three an easy run or full rest day</li>
-                </ul>
-              </div>
-            </section>
-          `,
-          hongkong: `
-            <div class="user-turn">@komoot recommend a few hiking routes in Hong Kong.</div>
-
-            <section class="assistant-turn">
-              <p class="assistant-lead">I pulled a few Hong Kong hiking routes from Komoot first, with options ranging from beginner-friendly to more advanced.</p>
-              <div class="thinking">Reasoned for 11s</div>
-
-              <div class="source-row">
-                <span class="source-dot" aria-hidden="true"></span>
-                <span>komoot</span>
-              </div>
-
-              <div class="cards">
-                <a href="#" class="route-card" data-demo-target="Komoot route detail">
-                  <div class="cover easy"><span class="badge easy">Easy</span></div>
-                  <div class="route-meta">📍 Hong Kong, China</div>
-                  <div class="route-title">Banyan Tree Park – Lugard Falls loop from ...</div>
-                  <div class="route-stats">↔ 2.65 mi ・ ◴ 01:17 h ・ ☆ 4.9</div>
-                </a>
-
-                <a href="#" class="route-card" data-demo-target="Komoot route detail">
-                  <div class="cover hard"><span class="badge hard">Hard</span></div>
-                  <div class="route-meta">📍 Hong Kong, China</div>
-                  <div class="route-title">Lugard Falls – Banyan Tree Park loop from L...</div>
-                  <div class="route-stats">↔ 7.51 mi ・ ◴ 03:56 h ・ ☆ 4.8</div>
-                </a>
-
-                <a href="#" class="route-card" data-demo-target="Komoot route detail">
-                  <div class="cover moderate"><span class="badge moderate">Moderate</span></div>
-                  <div class="route-meta">📍 Hong Kong, China</div>
-                  <div class="route-title">Lion Rock Summit – Lion Rock (Lion's Head) loop...</div>
-                  <div class="route-stats">↔ 5.22 mi ・ ◴ 02:59 h ・ ☆ 4.6</div>
-                </a>
-              </div>
-
-              <hr class="paragraph-divider" />
-
-              <div class="assistant-body">
-                <p>I found a set of popular Hong Kong routes that cover coastline, ridgeline, and urban-adjacent hiking. You can use the cards above to choose a direction first.</p>
-              </div>
-            </section>
-
-            <div class="user-turn followup">@Coros estimate how long this route would take for me based on my fitness model.</div>
-
-            <section class="assistant-turn compact">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>Route timing · fitness model estimate</span></div>
-              <p class="assistant-lead">Coros fitness modeling has been applied using your last 8 weeks of load, hiking history, and current recovery state.</p>
-              <div class="thinking">Reasoned for 9s</div>
-
-              <div class="assistant-body">
-                <h3>Time estimate</h3>
-                <ul>
-                  <li>Steady completion: 3h 45m - 4h 20m</li>
-                  <li>Conservative completion (photos and fueling): 4h 30m - 5h 05m</li>
-                </ul>
-                <h3>Model inputs</h3>
-                <ul>
-                  <li>Your uphill efficiency is about 11% above peers at similar pacing</li>
-                  <li>Late-session heart-rate drift is controlled well, averaging 6.8%</li>
-                  <li>Average recovery score over the last 7 days is 74/100, which supports a successful completion</li>
-                </ul>
-                <h3>Execution advice</h3>
-                <p>If you want to keep perceived effort in a comfortable range, plan around roughly 4h 30m for fueling and stops. If temperatures are high or your pre-route recovery is poor, use the conservative range.</p>
-              </div>
-            </section>
-          `,
-          analysis: `
-            <div class="file-chip">
-              <div class="file-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"></path>
-                  <path d="M14 2v5h5"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="file-name">Wugong Mountain reverse.kml</div>
-                <div class="file-type">File</div>
-              </div>
-            </div>
-            <div class="user-turn">@Coros estimate how long it would take me to finish this route based on my fitness model.</div>
-
-            <section class="assistant-turn">
-              <div class="tool-header"><span class="tool-status-dot" aria-hidden="true"></span><strong>Coros MCP</strong><span>KML route parse · fitness model estimate</span></div>
-              <p class="assistant-lead">I recalculated the finish-time estimate using the Coros fitness model plus the terrain parameters from this KML. The model incorporates your last 8 weeks of load, resting-heart-rate trend, and recent recovery condition.</p>
-              <div class="thinking">Reasoned for 5m 35s</div>
-
-              <div class="assistant-body">
-                <h3>Time estimate</h3>
-                <ul>
-                  <li>Best-case (light pack, minimal stops): 10h 10m - 11h 05m</li>
-                  <li>Typical completion (photos + normal fueling): 11h 20m - 12h 40m</li>
-                  <li>Conservative completion (heavier pack / average weather): 13h 00m - 14h 20m</li>
-                </ul>
-                <p>If your goal is to keep risk and fatigue in a reasonable range, splitting the route across two days is the more stable option.</p>
-              </div>
-
-              <hr class="paragraph-divider" />
-
-              <div class="assistant-body">
-                <h3>Model inputs</h3>
-                <ul>
-                  <li>KML route: 24.43 km with roughly 2200 m of total ascent</li>
-                  <li>Your uphill efficiency is about 8% above your 90-day personal average</li>
-                  <li>Recovery score over the last 7 days averages 73/100 with mild fluctuation</li>
-                  <li>Your downhill fatigue sensitivity is higher on long sustained descents</li>
-                </ul>
-                <h3>Execution advice</h3>
-                <p>If you still want a single-day push, use the typical completion range for fueling, start-time planning, and weather contingency. If comfort and safety matter more than one-day completion, a two-day plan fits your current model much better.</p>
-              </div>
-            </section>
-          `
-        }
+        en: conversationSeedEn
       }
     };
 
